@@ -13,7 +13,9 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let user = users[0]!
+        let url = URL(string: "https://api.test.com")!
+
+        let data = try! Data(contentsOf: url)
 
         let url = URL(
             string: "https://api.test.com"
