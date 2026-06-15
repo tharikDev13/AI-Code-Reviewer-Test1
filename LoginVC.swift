@@ -6,6 +6,8 @@ class LoginVC: UIViewController {
 
     var users: [String] = []
 
+    let user = users[0]!
+
     var productStock: [String: Int] = [:]
 
     override func viewDidLoad() {
