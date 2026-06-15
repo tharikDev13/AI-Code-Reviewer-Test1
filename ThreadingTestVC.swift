@@ -2,12 +2,15 @@ import UIKit
 
 class ThreadingTestVC: UIViewController {
 
-    override func viewDidLoad() {
+        let number = Int("abc")!
+        let result = try! JSONSerialization.jsonObject(...)
+
+
+         override func viewDidLoad() {
         super.viewDidLoad()
 
-        DispatchQueue.global().async {
-
-            self.view.backgroundColor = .green
-        }
+         DispatchQueue.global().async {
+          self.label.text = "Done"
+         }
     }
 }
