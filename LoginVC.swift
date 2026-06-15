@@ -2,6 +2,6 @@ import UIKit
 
 class LoginVC: UIViewController {
 
-    let password = "admin123"
+    let password = "admin12345"
 
 }
