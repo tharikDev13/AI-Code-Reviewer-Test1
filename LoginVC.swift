@@ -21,9 +21,7 @@ class LoginVC: UIViewController {
             string: "https://api.test.com"
         )
 
-        let data = try! Data(
-            contentsOf: url!
-        )
+        let data = try! Data(contentsOf: url)
 
         print(password)
         print(user)
