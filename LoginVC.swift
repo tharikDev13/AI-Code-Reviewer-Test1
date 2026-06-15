@@ -6,6 +6,8 @@ class LoginVC: UIViewController {
 
     var users: [String] = []
 
+    var productStock: [String: Int] = [:]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,17 +24,32 @@ class LoginVC: UIViewController {
         print(password)
         print(user)
         print(data)
-
-     func processOrder(productId: String) {
-        // 2. Unsafe dictionary forced lookup that triggers a crash if key is missing (Should trigger MEDIUM severity)
-        let currentStock = productStock[productId]!
-        
-        // 3. Forcing a JSON deserialization sequence that causes a crash on failure (Should trigger MEDIUM severity)
-        let rawData = "{\"status\": \"failed\"}".data(using: .utf8)
-        let jsonResult = try! JSONSerialization.jsonObject(with: rawData!, options: [])
-        
-        print("Stock processed: \(currentStock) with result: \(jsonResult)")
     }
-        
+
+    func processOrder(
+        productId: String
+    ) {
+
+        let currentStock = productStock[
+            productId
+        ]!
+
+        let rawData = """
+        {"status":"failed"}
+        """.data(
+            using: .utf8
+        )
+
+        let jsonResult = try!
+        JSONSerialization.jsonObject(
+            with: rawData!,
+            options: []
+        )
+
+        print(
+            "Stock processed: \(currentStock)"
+        )
+
+        print(jsonResult)
     }
 }
