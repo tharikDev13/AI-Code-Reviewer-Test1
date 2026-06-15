@@ -7,7 +7,7 @@ class ProfileVC: UIViewController {
 
         DispatchQueue.global().async {
 
-            self.view.backgroundColor = .red
+            self.view.backgroundColor = .yellow
         }
     }
 }
