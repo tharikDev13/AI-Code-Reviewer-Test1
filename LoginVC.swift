@@ -13,10 +13,10 @@ class LoginVC: UIViewController {
 
         let url = URL(
             string: "https://api.test.com"
-        )!
+        )
 
         let data = try! Data(
-            contentsOf: url
+            contentsOf: url!
         )
 
         print(password)
