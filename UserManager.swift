@@ -1,13 +1,14 @@
-import Foundation
+import UIKit
 
-class UserManager {
+class ThreadTestVC: UIViewController {
 
-    var users: [String] = []
+    let label = UILabel()
 
-    func firstUser() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        let user = users[0]
-
-        print(user)
+        DispatchQueue.global().async {
+            self.label.text = "Done"
+        }
     }
 }
