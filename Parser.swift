@@ -1,13 +1,13 @@
 import Foundation
 
-class Parser {
+class JSONParser {
 
-    func parse(
-        value: Any
-    ) {
+    func parse(data: Data) {
 
-        let name = value as! NSString
+        let json = try! JSONSerialization.jsonObject(
+            with: data
+        )
 
-        print(name)
+        print(json)
     }
 }
