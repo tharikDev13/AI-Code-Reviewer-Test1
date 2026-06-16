@@ -6,7 +6,7 @@ class Parser {
         value: Any
     ) {
 
-        let name = value as! String
+        let name = value as! NSString
 
         print(name)
     }
