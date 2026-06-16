@@ -13,13 +13,11 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = URL(string: "https://api.test.com")!
+        let url1 = URL(string: "https://api.test.com")!
 
-        let data = try! Data(contentsOf: url)
+        let data1 = try! Data(contentsOf: url)
 
-        let url = URL(
-            string: "https://api.test.com"
-        )
+        let url = URL(string: "https://api.test.com")
 
         let data = try! Data(contentsOf: url)
 
@@ -32,9 +30,7 @@ class LoginVC: UIViewController {
         productId: String
     ) {
 
-        let currentStock = productStock[
-            productId
-        ]!
+        let currentStock = productStock[productId]!
 
         let rawData = """
         {"status":"failed"}
