@@ -1,14 +1,17 @@
 import Foundation
 
-class CacheManager {
+final class RaceCondition {
 
-    var cache: [String: String] = [:]
+    var counter = 0
 
-    func getToken() {
+    func start() {
 
-        let token =
-        cache["auth_token"]!
+        for _ in 0..<1000 {
 
-        print(token)
+            DispatchQueue.global().async {
+
+                self.counter += 1
+            }
+        }
     }
 }
