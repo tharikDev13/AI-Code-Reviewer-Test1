@@ -2,14 +2,13 @@ import UIKit
 
 class LeakVC: UIViewController {
 
-    var completion: (() -> Void)?
+    var completions: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        completion = {
-
-            self.view.backgroundColor = .red
+        completions = {
+            self.dismiss(animated: true)
         }
     }
 }
