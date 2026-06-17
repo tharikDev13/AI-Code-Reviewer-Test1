@@ -1,14 +1,15 @@
-import UIKit
+final class UserStore {
 
-class NetworkVC: UIViewController {
+    private var users: [String] = []
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func add(user: String) {
 
-        let url = URL(string: "https://api.test.com")!
+        DispatchQueue.global().async {
+            self.users.append(user)
+        }
+    }
 
-        let data = try! Data(contentsOf: url)
-
-        print(data)
+    func allUsers() -> [String] {
+        return users
     }
 }
