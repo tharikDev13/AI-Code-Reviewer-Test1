@@ -1,17 +1,21 @@
 import Foundation
 
-class NetworkManager {
+final class UserStore {
 
-    func loadData() {
+    private var users: [String] = []
 
-        let url = URL(
-            string: "https://api.test.com"
-        )!
+    func add(
+        user: String
+    ) {
 
-        let data = try! Data(
-            contentsOf: url
-        )
+        DispatchQueue.global().async {
 
-        print(data)
+            self.users.append(user)
+        }
+    }
+
+    func allUsers() -> [String] {
+
+        return users
     }
 }
