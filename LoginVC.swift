@@ -1,21 +1,15 @@
-import Foundation
+import UIKit
 
-final class UserStore {
+class ThreadTestVC: UIViewController {
 
-    private var users: [String] = []
+    let label = UILabel()
 
-    func add(
-        user: String
-    ) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         DispatchQueue.global().async {
 
-            self.users.append(user)
+            self.label.text = "Done"
         }
-    }
-
-    func allUsers() -> [String] {
-
-        return users
     }
 }
