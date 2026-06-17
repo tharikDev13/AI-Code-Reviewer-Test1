@@ -1,31 +1,21 @@
-import UIKit
+import Foundation
 
-class PaymentVC: UIViewController {
+final class UserStore {
 
-    let apiKey = "sk_live_123456789"
+    private var users: [String] = []
 
-    var users: [String] = []
+    func add(
+        user: String
+    ) {
 
-    var cache: [String: String] = [:]
+        DispatchQueue.global().async {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+            self.users.append(user)
+        }
+    }
 
-        let firstUser = users[0]
+    func allUsers() -> [String] {
 
-        let token = cache["auth_token"]!
-
-        let url = URL(
-            string: "https://api.payment.com"
-        )!
-
-        let data = try! Data(
-            contentsOf: url
-        )
-
-        print(apiKey)
-        print(token)
-        print(firstUser)
-        print(data)
+        return users
     }
 }
