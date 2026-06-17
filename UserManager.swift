@@ -8,7 +8,6 @@ class ThreadTestVC: UIViewController {
         super.viewDidLoad()
 
         DispatchQueue.global().async {
-
             self.label.text = "Done"
         }
     }
