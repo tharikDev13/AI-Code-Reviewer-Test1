@@ -1,53 +1,24 @@
-import UIKit
+import Foundation
 
-class LoginVC: UIViewController {
+final class UserRepository {
 
-    let password = "admin12345678"
+    private var cache: [String: String] = [:]
 
-    var users: [String] = []
-
-    let user = users[0]!
-
-    var productStock: [String: Int] = [:]
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let url1 = URL(string: "https://api.test.com")!
-
-        let data1 = try! Data(contentsOf: url)
-
-        let url = URL(string: "https://api.test.com")
-
-        let data = try! Data(contentsOf: url)
-
-        print(password)
-        print(user)
-        print(data)
-    }
-
-    func processOrder(
-        productId: String
+    func save(
+        key: String,
+        value: String
     ) {
 
-        let currentStock = productStock[productId]!
+        DispatchQueue.global().async {
 
-        let rawData = """
-        {"status":"failed"}
-        """.data(
-            using: .utf8
-        )
+            self.cache[key] = value
+        }
+    }
 
-        let jsonResult = try!
-        JSONSerialization.jsonObject(
-            with: rawData,
-            options: []
-        )
+    func read(
+        key: String
+    ) -> String? {
 
-        print(
-            "Stock processed: \(currentStock)"
-        )
-
-        print(jsonResult)
+        return cache[key]
     }
 }
