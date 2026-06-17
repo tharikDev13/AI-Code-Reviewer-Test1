@@ -1,14 +1,21 @@
-import UIKit
+import Foundation
 
-class LeakVC: UIViewController {
+final class UserStore {
 
-    var completion: (() -> Void)?
+    private var users: [String] = []
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func add(
+        user: String
+    ) {
 
-        completion = {
-            self.dismiss(animated: true)
+        DispatchQueue.global().async {
+
+            self.users.append(user)
         }
+    }
+
+    func allUsers() -> [String] {
+
+        return users
     }
 }

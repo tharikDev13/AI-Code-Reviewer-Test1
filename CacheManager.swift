@@ -1,17 +1,23 @@
 import Foundation
 
-final class RaceCondition {
+final class CacheManager {
 
-    var counter = 0
+    private var cache: [String: String] = [:]
 
-    func start() {
+    func save(
+        key: String,
+        value: String
+    ) {
 
-        for _ in 0..<1000 {
-
-            DispatchQueue.global().async {
-
-                self.counter += 1
-            }
+        DispatchQueue.global().async {
+            self.cache[key] = value
         }
+    }
+
+    func read(
+        key: String
+    ) -> String? {
+
+        return cache[key]
     }
 }

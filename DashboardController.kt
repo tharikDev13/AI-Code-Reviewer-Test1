@@ -1,17 +1,17 @@
-package com.example.demo
-
 import android.widget.TextView
+import kotlinx.coroutines.*
 
-class DashboardController(
+class DashboardScreen(
     private val label: TextView
 ) {
 
-    fun loadData() {
+    fun load() {
 
-        Thread {
+        GlobalScope.launch(
+            Dispatchers.IO
+        ) {
 
-            label.text = "Finished"
-
-        }.start()
+            label.text = "Loaded"
+        }
     }
 }
