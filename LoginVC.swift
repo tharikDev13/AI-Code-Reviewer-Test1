@@ -1,24 +1,21 @@
 import Foundation
 
-final class UserRepository {
+final class UserStore {
 
-    private var cache: [String: String] = [:]
+    private var users: [String] = []
 
-    func save(
-        key: String,
-        value: String
+    func add(
+        user: String
     ) {
 
         DispatchQueue.global().async {
 
-            self.cache[key] = value
+            self.users.append(user)
         }
     }
 
-    func read(
-        key: String
-    ) -> String? {
+    func allUsers() -> [String] {
 
-        return cache[key]
+        return users
     }
 }
