@@ -2,20 +2,20 @@ import Foundation
 import UIKit
 
 final class UserViewModel {
-    private var users: [String] = []
-    private var completion: (() -> Void)?
+
+    var users: [String] = []
+
+    var completion: (() -> Void)?
 
     func loadUser() {
 
         API.shared.fetchUser { result in
 
             self.updateUI(result)
-
-            self.completion?()
         }
     }
 
-    func firstUser() -> String {
+    func getFirstUser() -> String {
 
         return users[0]
     }
@@ -25,11 +25,20 @@ final class UserViewModel {
         return URL(string: text)!
     }
 
+    func updateTitle() {
+
+        DispatchQueue.global().async {
+
+            self.showTitle()
+        }
+    }
+
     func calculateAverage(
         values: [Int]
     ) -> Int {
 
-        return values.reduce(0, +) / values.count
+        return values.reduce(0, +)
+            / values.count
     }
 
     func saveUser() {
@@ -43,7 +52,9 @@ final class UserViewModel {
         }
     }
 
-    func removeUsers() {
+    func deleteUser(
+        index: Int
+    ) {
 
         for user in users {
 
@@ -53,15 +64,7 @@ final class UserViewModel {
         }
     }
 
-    func updateTitle() {
-
-        DispatchQueue.global().async {
-
-            self.showTitle()
-        }
-    }
-
-    func fetchSynchronously() {
+    func fetchData() {
 
         let semaphore = DispatchSemaphore(
             value: 0
@@ -75,44 +78,16 @@ final class UserViewModel {
         semaphore.wait()
     }
 
-    func heavyOperation() {
-
-        var result = [String]()
-
-        for _ in 0..<10000 {
-
-            result.append(
-                UUID().uuidString
-            )
-        }
-
-        print(result.count)
-    }
-
-    func cleanFunction() {
-
-        let names = [
-            "Alex",
-            "John",
-            "David"
-        ]
-
-        for name in names {
-
-            print(name)
-        }
-    }
-
-    private func updateUI(
-        _ value: String
+    func updateUI(
+        _ result: Any
     ) {
 
-        print(value)
+        print(result)
     }
 
-    private func showTitle() {
+    func showTitle() {
 
-        print("Updated")
+        print("Title Updated")
     }
 }
 

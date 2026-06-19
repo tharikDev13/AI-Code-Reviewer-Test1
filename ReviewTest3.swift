@@ -2,7 +2,9 @@ import Foundation
 import UIKit
 
 final class UserViewModel {
+
     private var users: [String] = []
+
     private var completion: (() -> Void)?
 
     func loadUser() {
