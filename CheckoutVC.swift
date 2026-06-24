@@ -1,27 +1,19 @@
-import UIKit
+import Foundation
 
-final class CheckoutVC: UIViewController {
+final class UserStore {
 
-    private let label = UILabel()
+    private var users: [String] = []
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        DispatchQueue.global().async {
-
-            let url = URL(
-                string: "https://jsonplaceholder.typicode.com/posts"
-            )!
-
-            let data = try! Data(
-                contentsOf: url
-            )
-
-            let json = try! JSONSerialization.jsonObject(
-                with: data
-            )
-
-            self.label.text = "\(json)"
+    func add(
+        user: String
+    ) {
+         DispatchQueue.global().async {
+            self.users.append(user)
         }
+    }
+
+    func allUsers() -> [String] {
+
+        return users
     }
 }

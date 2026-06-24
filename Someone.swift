@@ -1,3 +1,4 @@
+
 import Foundation
 import UIKit
 
@@ -135,6 +136,6 @@ final class Database {
     static let shared = Database()
 
     func save() throws {
-
+        
     }
 }
